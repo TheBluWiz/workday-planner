@@ -69,3 +69,32 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+table {
+  width: 85%;
+  margin: 0 auto;
+}
+
+tr {
+  display: flexbox;
+  width: 100%;
+  line-height: 5rem;
+  margin: 0 2rem;
+  justify-content: center;
+  border: 2px solid;
+  border-color: white;
+  box-sizing: border-box;
+}
+
+td {
+  flex-grow: 0;
+  width: 10%;
+  margin: 1rem;
+  text-align: center;
+}
+
+td.user-input, input{
+  width: 80%;
+  background-color: gray;
+  flex-grow: 1;
+}
