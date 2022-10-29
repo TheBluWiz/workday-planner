@@ -14,13 +14,17 @@ for (let i = 0; i < 9; i++) {
   var calHour = moment(dayString + " " + calendarTable.children().eq(i).data("time"));
   if (moment(calHour).isBefore(currentTime)) {
     //make red
+    calendarTable.children().eq(i).children().eq(1).css("background-color", "red");
+    calendarTable.children().eq(i).children().eq(1).children().css("background-color", "red")
   } else if (moment(calHour).isSame(currentTime)) {
     //keep gray
   } else {
     //make green
+    calendarTable.children().eq(i).children().eq(1).css("background-color", "green");
+    calendarTable.children().eq(i).children().eq(1).children().css("background-color", "green")
   }
 }
-
+//console.log(calendarTable.children().eq(i).children().eq(1))
 // Allow users to create events in persistent storage
 
 
