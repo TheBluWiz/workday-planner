@@ -94,7 +94,7 @@ td {
 }
 
 td.user-input, input{
-  width: 80%;
+  width: 95%;
   background-color: gray;
   flex-grow: 1;
 }
