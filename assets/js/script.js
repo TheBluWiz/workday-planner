@@ -1,13 +1,15 @@
 // Create UI Hooks
-var currentDayEl = $('#currentDay');
+var currentDayEl = $('#currentDay')
 var calendarTable = $('#tbody');
+
 // Create State Variables
 var currentTime = moment().startOf('hour');
 var currentDay = currentTime.format('dddd, MMMM Do')
-console.log(currentTime)
-console.log(currentDay)
+var calendarEvents = {};
+
 // Set Current Day to top
 currentDayEl.text(currentDay)
+
 // Set Each time block to past, present, and future
 var dayString = currentTime.format('YYYY-MM-DD')
 for (let i = 0; i < 9; i++) {
@@ -24,8 +26,11 @@ for (let i = 0; i < 9; i++) {
     calendarTable.children().eq(i).children().eq(1).children().css("background-color", "green")
   }
 }
-//console.log(calendarTable.children().eq(i).children().eq(1))
 // Allow users to create events in persistent storage
-
+calendarTable.click(function(event) {
+  if (event.target == `<button class="saveBtn">&#128190;</button>`) {
+    console.log("It worked!")
+  }
+})
 
 // console.log(calendarTable.children().eq(i).children().eq(1)) select text content

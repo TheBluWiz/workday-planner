@@ -97,4 +97,14 @@ td.user-input, input{
   width: 95%;
   background-color: gray;
   flex-grow: 1;
+  border: none;
+}
+
+img {
+  background-color: transparent;
+}
+
+button {
+  background-color: transparent;
+  width: 40px;
 }
