@@ -1,6 +1,8 @@
 // Create UI Hooks
 var currentDayEl = $('#currentDay')
 var calendarTable = $('#tbody');
+var inputFieldsEl = $('.input-field')
+console.log(inputFieldsEl)
 
 // Create State Variables
 var currentTime = moment().startOf('hour');
@@ -43,7 +45,12 @@ var calendarEvents = [
     eventText: ""
   },
 ];
-
+if (JSON.parse(localStorage.getItem("calendarEvents")) !== null) {
+  calendarEvents = JSON.parse(localStorage.getItem("calendarEvents"));
+  for (let i = 0; i < inputFieldsEl.length; i++) {
+    inputFieldsEl[i].value = calendarEvents[i].eventText
+  }
+}
 // Set Current Day to top
 currentDayEl.text(currentDay)
 
@@ -71,8 +78,9 @@ calendarTable.click(function (event) {
     var whichHour = hourEl.dataset.time // output is 09
     for (let i = 0; i < calendarEvents.length; i++) {
       if (calendarEvents[i].whichHour == whichHour) {
-        calendarEvents[i].eventText = hourEl.value
-      } 
+        calendarEvents[i].eventText = hourEl.value;
+        localStorage.setItem("calendarEvents", JSON.stringify(calendarEvents));
+      }
     }
   }
 })
