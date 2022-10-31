@@ -5,7 +5,44 @@ var calendarTable = $('#tbody');
 // Create State Variables
 var currentTime = moment().startOf('hour');
 var currentDay = currentTime.format('dddd, MMMM Do')
-var calendarEvents = [];
+var calendarEvents = [
+  {
+    whichHour: "09",
+    eventText: ""
+  },
+  {
+    whichHour: "10",
+    eventText: ""
+  },
+  {
+    whichHour: "11",
+    eventText: ""
+  },
+  {
+    whichHour: "12",
+    eventText: ""
+  },
+  {
+    whichHour: "13",
+    eventText: ""
+  },
+  {
+    whichHour: "14",
+    eventText: ""
+  },
+  {
+    whichHour: "15",
+    eventText: ""
+  },
+  {
+    whichHour: "16",
+    eventText: ""
+  },
+  {
+    whichHour: "17",
+    eventText: ""
+  },
+];
 
 // Set Current Day to top
 currentDayEl.text(currentDay)
@@ -27,15 +64,15 @@ for (let i = 0; i < 9; i++) {
   }
 }
 // Allow users to create events in persistent storage
-calendarTable.click(function(event) {
+calendarTable.click(function (event) {
   var buttonEl = event.target
   if (buttonEl.matches("button")) {
     var hourEl = buttonEl.parentElement.previousElementSibling.children[0]
-    var whichHour = hourEl.dataset.time
-    var eventText = hourEl.value
-    event = {
-      whichHour: hourEl.dataset.time,
-      eventText: hourEl.value
+    var whichHour = hourEl.dataset.time // output is 09
+    for (let i = 0; i < calendarEvents.length; i++) {
+      if (calendarEvents[i].whichHour == whichHour) {
+        calendarEvents[i].eventText = hourEl.value
+      } 
     }
   }
 })
