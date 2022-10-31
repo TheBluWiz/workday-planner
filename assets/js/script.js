@@ -5,7 +5,7 @@ var calendarTable = $('#tbody');
 // Create State Variables
 var currentTime = moment().startOf('hour');
 var currentDay = currentTime.format('dddd, MMMM Do')
-var calendarEvents = {};
+var calendarEvents = [];
 
 // Set Current Day to top
 currentDayEl.text(currentDay)
@@ -28,8 +28,15 @@ for (let i = 0; i < 9; i++) {
 }
 // Allow users to create events in persistent storage
 calendarTable.click(function(event) {
-  if (event.target == `<button class="saveBtn">&#128190;</button>`) {
-    console.log("It worked!")
+  var buttonEl = event.target
+  if (buttonEl.matches("button")) {
+    var hourEl = buttonEl.parentElement.previousElementSibling.children[0]
+    var whichHour = hourEl.dataset.time
+    var eventText = hourEl.value
+    event = {
+      whichHour: hourEl.dataset.time,
+      eventText: hourEl.value
+    }
   }
 })
 
