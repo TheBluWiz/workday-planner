@@ -59,11 +59,13 @@ var dayString = currentTime.format('YYYY-MM-DD')
 for (let i = 0; i < 9; i++) {
   var calHour = moment(dayString + " " + calendarTable.children().eq(i).data("time")); //creates new moment for the start of each hour
   if (moment(calHour).isBefore(currentTime)) {
-    //make red
+    //make gray
+    calendarTable.children().eq(i).children().eq(1).css("background-color", "gray");
+    calendarTable.children().eq(i).children().eq(1).children().css("background-color", "gray")
+  } else if (moment(calHour).isSame(currentTime)) {
+    //keep red
     calendarTable.children().eq(i).children().eq(1).css("background-color", "red");
     calendarTable.children().eq(i).children().eq(1).children().css("background-color", "red")
-  } else if (moment(calHour).isSame(currentTime)) {
-    //keep gray
   } else {
     //make green
     calendarTable.children().eq(i).children().eq(1).css("background-color", "green");
