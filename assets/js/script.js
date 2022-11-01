@@ -5,8 +5,8 @@ var inputFieldsEl = $('.input-field')
 console.log(inputFieldsEl)
 
 // Create State Variables
-var currentTime = moment().startOf('hour');
-var currentDay = currentTime.format('dddd, MMMM Do')
+var currentTime = moment().startOf('hour'); // Sets time to the start of the hour
+var currentDay = currentTime.format('dddd, MMMM Do') //Formats the day
 var calendarEvents = [
   {
     whichHour: "09",
@@ -57,7 +57,7 @@ currentDayEl.text(currentDay)
 // Set Each time block to past, present, and future
 var dayString = currentTime.format('YYYY-MM-DD')
 for (let i = 0; i < 9; i++) {
-  var calHour = moment(dayString + " " + calendarTable.children().eq(i).data("time"));
+  var calHour = moment(dayString + " " + calendarTable.children().eq(i).data("time")); //creates new moment for the start of each hour
   if (moment(calHour).isBefore(currentTime)) {
     //make red
     calendarTable.children().eq(i).children().eq(1).css("background-color", "red");
@@ -72,10 +72,10 @@ for (let i = 0; i < 9; i++) {
 }
 // Allow users to create events in persistent storage
 calendarTable.click(function (event) {
-  var buttonEl = event.target
-  if (buttonEl.matches("button")) {
-    var hourEl = buttonEl.parentElement.previousElementSibling.children[0]
-    var whichHour = hourEl.dataset.time // output is 09
+  var clickedEl = event.target
+  if (clickedEl.matches("button")) {
+    var hourEl = clickedEl.parentElement.previousElementSibling.children[0] //traverses DOM to nearest input
+    var whichHour = hourEl.dataset.time // gets time of input field
     for (let i = 0; i < calendarEvents.length; i++) {
       if (calendarEvents[i].whichHour == whichHour) {
         calendarEvents[i].eventText = hourEl.value;
@@ -84,5 +84,3 @@ calendarTable.click(function (event) {
     }
   }
 })
-
-// console.log(calendarTable.children().eq(i).children().eq(1)) select text content
